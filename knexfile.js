@@ -8,7 +8,7 @@ module.exports = {
       filename: './data/project-manager.db3'
     },
     useNullAsDefault: true, 
-    migrations: {directory: './migrations'}, 
+    migrations: {directory: './data/migrations'}, 
     pool: {
       afterCreate: (conn, done) => {
         conn.run('PRAGMA foreign_keys = ON', done);

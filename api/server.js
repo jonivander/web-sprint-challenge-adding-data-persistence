@@ -6,9 +6,7 @@ const db = require('./data/knex-config');
 
 const server = express();
 
-server.use(express.json());
-server.use(helmet());
-server.use(morgan('dev')); 
+server.use(express.json(), helmet(), morgan('dev'));
 
 server.use('/', (req, res) => {res.send('Server is up...')});
 server.get('/', (req, res) => {
@@ -112,6 +110,5 @@ server.get('/tasks', (req, res) => {
             });
         })
 });
-
 
 module.exports = server; 
