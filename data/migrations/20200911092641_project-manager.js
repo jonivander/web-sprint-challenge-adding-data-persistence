@@ -5,7 +5,7 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('name', 250).notNullable().index().unique();
         tbl.string('description', 300);
-        // boolean
+        tbl.boolean('completed');
     })
     .createTable("resources", tbl => {
         tbl.increments();
@@ -16,10 +16,13 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('description', 400).notNullable();
         tbl.string('notes', 400);
-        // boolean
+        tbl.boolean('completed');
     })
 };
 
 exports.down = function(knex) {
-  
+  return knex.schema
+        .dropTableIfExists("tasks")
+        .dropTableIfExists("resources")
+        .dropTableIfExists("projects");
 };
